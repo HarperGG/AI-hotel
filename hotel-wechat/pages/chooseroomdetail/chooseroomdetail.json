@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-icon": "/lib/dist/icon/index",
+    "i-message": "/lib/dist/message/index",
+     "i-spin": "/lib/dist/spin/index"
+  },
+  "navigationStyle": "custom"
+}

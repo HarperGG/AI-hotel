@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能酒店</title>
+  <link rel="stylesheet" href="css/index.css">
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+  <div class="main">
+    <div class="title">
+      <div>
+        AI酒店
+      </div>
+      <div>
+        To provide you with the most comfortable service is our Tenet
+      </div>
+    </div>
+    <div class="btn">
+      <div class="click_btn">
+        办理入住
+      </div>
+      <div class="click_btn1">
+        办理退房
+      </div>
+    </div>
+  </div>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script>
+     $.ajax({
+     type: "get",
+     url: "http://jiangwei.online:8080/phone/getToken",
+     success: function (res) {
+
+     window.sessionStorage.setItem('token',res)
+     
+     },
+     error:function (error) {
+
+     }
+     })
+
+     var Btn1=document.getElementsByClassName('click_btn')[0];
+     Btn1.onclick=function(){
+      window.location.href="./swiping.html";
+      window.sessionStorage.setItem('check','0');
+     }
+     var Btn1=document.getElementsByClassName('click_btn1')[0];
+     Btn1.onclick=function(){
+     window.location.href="./swiping.html";
+    window.sessionStorage.setItem('check','1');
+     }
+  </script>
+</body>
+</html>

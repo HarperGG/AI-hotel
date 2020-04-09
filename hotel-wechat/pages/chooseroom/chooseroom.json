@@ -1,0 +1,9 @@
+{
+  "navigationBarTitleText": "智慧酒店",
+  "navigationBarTextStyle": "black",
+  "usingComponents": {
+    "i-icon": "/lib/dist/icon/index",
+    "i-message": "/lib/dist/message/index"
+  }
+  
+}

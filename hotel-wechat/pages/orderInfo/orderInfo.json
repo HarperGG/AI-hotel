@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+     "i-icon": "/lib/dist/icon/index",
+     "i-message": "/lib/dist/message/index"
+  },
+  "navigationBarTitleText": "智慧酒店"
+}

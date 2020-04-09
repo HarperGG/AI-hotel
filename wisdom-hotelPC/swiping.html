@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>智能酒店</title>
+  <link rel="stylesheet" type="text/css" href="css/ns-default.css" />
+  <link rel="stylesheet" type="text/css" href="css/ns-style-attached.css" />
+  <link rel="stylesheet" href="css/swiping.css">
+  <link rel="stylesheet" href="css/jquery.mloading.css">
+  <link rel="stylesheet" href="css/common.css">
+
+  <script src="js/modernizr.custom.js"></script>
+</head>
+
+<body>
+  <div class="main">
+    <div class="logo">
+      AI酒店
+    </div>
+    <div class="content">
+      <div class="photograph">
+        <video id="video" width="800px" height="500px" autoplay="autoplay"></video>
+        <canvas style="display: none;" id="canvas" width="800px" height="500px"></canvas>
+      </div>
+      <div class="reminder">
+        请将人脸对准屏幕
+      </div>
+      <div class="scan">
+        开始扫描
+      </div>
+
+    </div>
+
+
+  </div>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script src="./js/jquery.mloading.js"></script>
+  <script src="js/classie.js"></script>
+  <script src="js/notificationFx.js"></script>
+  <script>
+    $(document).ready(function () {
+     
+      
+
+      $(".photograph").mLoading({
+        text: "识别中...", //加载文字，默认值：加载中...
+        icon: "", //加载图标，默认值：一个小型的base64的gif图片
+        html: true, //设置加载内容是否是html格式，默认值是false
+        content: "", //忽略icon和text的值，直接在加载框中显示此值
+        mask: true //是否显示遮罩效果，默认显示
+      });
+      $(".photograph").mLoading("hide"); //隐藏loading组件
+      //获得video摄像头区域
+      let video = document.getElementById("video");
+      let constraints = {
+        video: {
+          width: 800,
+          height: 500
+        },
+        audio: true
+      };
+      let promise = navigator.mediaDevices.getUserMedia(constraints);
+      promise.then(function (MediaStream) {
+        video.srcObject = MediaStream;
+        video.play();
+      }).catch(function (PermissionDeniedError) {
+        console.log(PermissionDeniedError);
+      })
+
+      $(".scan").click(function () {
+        $(".photograph").mLoading("show"); //显示loading组件
+        let canvas = document.getElementById("canvas");
+        let ctx = canvas.getContext('2d');
+        ctx.drawImage(video, 0, 0, 800, 500);
+        var image = new Image();
+        image.src = canvas.toDataURL("image/png");
+        var fileImg = dataURLtoFile(image.src, '1.jpg')
+        var formdata = new FormData();
+        formdata.append("file", fileImg);
+        // 判断是入住还是退房
+        if (window.sessionStorage.getItem('check') == 0) {
+          $.ajax({
+            type: "post",
+            url: "http://jiangwei.online:8080/uploadImg",
+            cache: false,
+            headers: {
+              token:window.sessionStorage.getItem('token')
+            },
+            processData: false,
+            contentType: false,
+            data: formdata,
+            dataType: "json",
+            success: function (res) {
+              $.ajax({
+                type: "post",
+                url: "http://jiangwei.online:8080/phone/isOne",
+                // url: "http://jiangwei.online:8080/phone/isOne?name="+res.data+"&occasion=0",
+                data: {
+                  name: res.data,
+                  occasion: 0
+                },
+                headers: {
+                  token:window.sessionStorage.getItem('token')
+                },
+                dataType: "json",
+                success: function (res) {
+                  console.log(res);
+                  if (res.code == 200) {
+                    window.sessionStorage.setItem('infoData', JSON.stringify(res.data[0]))
+                    setTimeout(function () {
+                      var notification = new NotificationFx({
+                        message: `<span class="icon icon-calendar"></span>
+                          <p>人脸信息比对成功！</p>
+                          <p>正在跳转...</p>`,
+                        layout: 'attached',
+                        effect: 'bouncyflip',
+                        type: 'warning', // notice, warning or error
+                      });
+                      notification.show();
+                      $(".photograph").mLoading("hide"); //隐藏loading组件
+                    }, 1200);
+
+                    setTimeout(function () {
+                      window.location.href = './check_in.html'
+                    }, 2500)
+                  } else {
+                    setTimeout(function () {
+                      var notification = new NotificationFx({
+                        message: `<span class="icon icon-calendar"></span>
+                    <p>${res.msg}</p>
+                    `,
+                        layout: 'attached',
+                        effect: 'bouncyflip',
+                        type: 'warning', // notice, warning or error
+                      });
+                      notification.show();
+                      $(".photograph").mLoading("hide"); //隐藏loading组件
+                    }, 1200);
+                  }
+                },
+                error: function (error) {
+                  setTimeout(function () {
+                    var notification = new NotificationFx({
+                      message: `<span class="icon icon-calendar"></span>
+                       <p>人脸信息比对失败...</p>`,
+                      layout: 'attached',
+                      effect: 'bouncyflip',
+                      type: 'warning', // notice, warning or error
+                    });
+                    notification.show();
+                    $(".photograph").mLoading("hide"); //隐藏loading组件
+                  }, 1200);
+                }
+              });
+            }
+          });
+        } else {
+          $.ajax({
+            type: "post",
+            url: "http://jiangwei.online:8080/uploadImg",
+            cache: false,
+            processData: false,
+            contentType: false,
+            headers: {
+             token:window.sessionStorage.getItem('token')
+            },
+            data: formdata,
+            dataType: "json",
+            success: function (res) {
+              $.ajax({
+                type: "post",
+                url: "http://jiangwei.online:8080/phone/isOne",
+                data: {
+                  name: res.data,
+                  occasion: 1
+                },
+                headers: {
+                  token:window.sessionStorage.getItem('token')
+                },
+                dataType: "json",
+                success: function (res) {
+                 
+                    if(res.code == 200){
+                       window.sessionStorage.setItem('infoData', JSON.stringify(res.data.info))
+                       window.sessionStorage.setItem('detail', JSON.stringify(res.data.detail))
+                       window.sessionStorage.setItem('idCardNum', res.data.detail[0].id_number)
+
+                       setTimeout(function () {
+                       var notification = new NotificationFx({
+                       message: `<span class="icon icon-calendar"></span>
+                       <p>人脸信息比对成功！</p>
+                       <p>正在跳转...</p>`,
+                       layout: 'attached',
+                       effect: 'bouncyflip',
+                       type: 'warning', // notice, warning or error
+                       });
+                       notification.show();
+                       $(".photograph").mLoading("hide"); //隐藏loading组件
+                       }, 1200);
+
+                       setTimeout(function () {
+                       window.location.href = './check_out.html'
+                       }, 2500)
+                    }else if(res.code == 100){
+                       setTimeout(function () {
+                       var notification = new NotificationFx({
+                       message: `<span class="icon icon-calendar"></span>
+                       <p>${res.msg}</p>
+                       `,
+                       layout: 'attached',
+                       effect: 'bouncyflip',
+                       type: 'warning', // notice, warning or error
+                       });
+                       notification.show();
+                       $(".photograph").mLoading("hide"); //隐藏loading组件
+                       }, 1200);
+                    }
+                },
+                error: function (error) {
+                  setTimeout(function () {
+                    var notification = new NotificationFx({
+                      message: `<span class="icon icon-calendar"></span>
+                                  <p>人脸信息比对失败...</p>`,
+                      layout: 'attached',
+                      effect: 'bouncyflip',
+                      type: 'warning', // notice, warning or error
+                    });
+                    notification.show();
+                    $(".photograph").mLoading("hide"); //隐藏loading组件
+                  }, 1200);
+                }
+              });
+            }
+          });
+        }
+      })
+
+      function dataURLtoFile(dataurl, filename) { //将base64转换为文件，dataurl为base64字符串，filename为文件名（必须带后缀名，如.jpg,.png）
+        var arr = dataurl.split(','),
+          mime = arr[0].match(/:(.*?);/)[1],
+          bstr = atob(arr[1]),
+          n = bstr.length,
+          u8arr = new Uint8Array(n);
+        while (n--) {
+          u8arr[n] = bstr.charCodeAt(n);
+        }
+        return new File([u8arr], filename, {
+          type: mime
+        });
+      }
+    })
+  </script>
+
+</body>
+
+</html>

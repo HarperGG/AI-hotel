@@ -1,0 +1,171 @@
+.mian {
+  width: 100%;
+  height: auto;
+  box-sizing: border-box;
+  position: relative;
+}
+  .swiperContent {
+    width: 100%;
+    position: relative;
+    height: 402rpx;
+  }
+
+  .swiperContent_swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiperContent image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiperContent_swiper .wx-swiper-dot {
+    width: 30rpx;
+    display: inline-flex;
+    height: 30rpx;
+    margin-left: 10rpx;
+    margin-bottom: 80rpx;
+    border: 1rpx solid #fff;
+    justify-content: space-between;
+  }
+
+  .swiperContent_swiper .wx-swiper-dot::before {
+    content: '';
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 50%;
+  }
+
+  .swiperContent_swiper .wx-swiper-dot-active::before {
+    background: #fff;
+  }
+
+.detail-img {
+  width: 100%;
+  height: 625rpx;
+  z-index: 1;
+}
+
+.detail-img image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 场所介绍 */
+.detail-info {
+  font-family: FZLanTingHeiS-R-GB;
+  height: 810rpx;
+  width: 100%;
+  top: 550rpx;
+  z-index: 100;
+  background: rgba(13, 59, 46, 1);
+  border-radius: 75rpx;
+  position: absolute;
+}
+.name1 {
+  margin: 60rpx 0 0 80rpx;
+  width: 100%;
+  font-size: 45rpx;
+  font-weight: 600;
+  letter-spacing: 10rpx;
+  color: rgba(254, 252, 252, 1);
+}
+.name2 {
+  margin: 0 0 0 80rpx;
+  width: 100%;
+  font-size: 16rpx;
+  font-weight: 600;
+  letter-spacing: 15rpx;
+  color: rgba(251, 255, 254, 1);
+}
+.classify{
+margin: 20rpx 0 0 80rpx;
+width: 100%;
+letter-spacing: 10rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(254, 249, 249, 1);
+}
+.address{
+  margin: 10rpx 0 0 80rpx;
+  width: 100%;
+  letter-spacing: 10rpx;
+  font-size:28rpx;
+  font-weight:400;
+  color:rgba(254, 249, 249, 1);
+}
+
+.price{
+  margin: 40rpx 0 0 70rpx;
+  width: 100%;
+}
+.price text:nth-of-type(1){
+  font-size:42rpx;
+  letter-spacing: 10rpx;
+  font-weight:600;
+  color:#F2B608;
+}
+.price text:nth-of-type(2) {
+  font-size: 32rpx;
+    letter-spacing: 10rpx;
+  font-weight: 500;
+  color: rgba(242, 182, 8, 1);
+}
+.introduce1{
+  margin-top: 40rpx;
+  width: 100%;
+  line-height: 40rpx;
+  letter-spacing: 5rpx;
+  text-align: center;
+ box-sizing: border-box;
+ padding: 0 40rpx;
+  font-size:20rpx;
+  font-family:FZHei-B01S;
+  font-weight:400;
+  color:rgba(251, 250, 247, 1);
+  
+}
+.introduce2 {
+  width: 100%;
+  line-height: 20rpx;
+  letter-spacing: 5rpx;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 40rpx;
+  font-size: 15rpx;
+  font-family: FZHei-B01S;
+  font-weight: 400;
+  color: rgba(251, 250, 247, 1);
+}
+
+.detail-btn{
+  box-sizing: border-box;
+  padding-top: 40rpx;
+  position: fixed;
+  width:100%;
+  bottom: 0;
+  z-index: 1000;
+  height:222rpx;
+  background:rgba(255, 255, 255, 1);
+  border-top-left-radius: 75rpx;
+  border-top-right-radius: 75rpx;
+}
+.detail-btn-order{
+  padding: 0;
+  letter-spacing: 20rpx;
+  width:70% !important;
+  line-height: 90rpx;
+  height:90rpx;
+  background:rgba(109, 151, 115, 1);
+  border-radius:30rpx;
+  font-size:45rpx;
+  font-weight:bold;
+  color:rgba(255, 255, 255, 1);
+}
+.detail-btn-vip{
+  text-align: center;
+  font-size:30rpx;
+  font-weight:bold;
+  color:rgba(204, 140, 70, 1);
+}

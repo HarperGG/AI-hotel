@@ -1,0 +1,24 @@
+<i-message id="message" />
+<view class="main">
+  <view class="content">
+    <view class="content-item"  wx:for="{{orderData}}">
+      <image class="" src="{{baseUrl}}static/{{item.path}}" mode="aspectFillx">
+      </image>
+      <view  class="item-info">
+        <text class="item-name">{{item.name}}</text>
+        <view class="item-price">
+          <text class="">￥{{item.money}}</text>
+          <i-icon data-id="{{item.id}}"  data-name="{{item.name}}" data-money="{{item.money}}" bindtap="addItem" type="add" size="30"/>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="submit-order" bindtap="addOrder">
+    <i-icon type="transaction_fill" size="40"/>
+    <view class="order-price">
+      <text>共计选择了￥</text>
+      <text>{{allMoney}}</text>
+    </view>
+    <text class="money">￥20立获VIP</text>
+  </view>
+</view>

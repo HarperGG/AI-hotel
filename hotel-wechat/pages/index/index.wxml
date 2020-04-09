@@ -1,0 +1,56 @@
+<i-message id="message" />
+<view>
+  <view class="swiperContent">
+    <swiper circular autoplay indicator-dots indicator-active-color="#fff" class="swiperContent_swiper">
+      <swiper-item wx:for="{{allimg}}" wx:for-item="item">
+        <image src="http://jiangwei.online:8080/static/{{item.path}}" mode="aspectFill"> </image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="changeHome">
+    <view class="changeHome-card">
+      <span class="changeHome-card-logo">LOGO</span>
+      <view class="changeHome-info">
+        <text bindtap="activeNav" data-index='1'
+          class="{{currentIndexNav == 1 ? 'changeHome-info-active' :''}}">订房日期</text>
+        <!-- <text bindtap="activeNav" data-index='2'
+          class="{{currentIndexNav == 2 ? 'changeHome-info-active' :''}}">钟点房</text> -->
+      </view>
+      <view class="changeHome-time">
+        <view class="changeHome-time1">
+          <view class="changeHome-time-title">
+            <text wx:if="{{isallday}}" bindtap='dianji'>入住日期</text>
+            <text wx:if="{{!isallday}}" bindtap='bindDateChange'>入住日期</text>
+            <!-- 引用组件 -->
+            <rili bindmyevent="onMyEvent" id='rili'></rili>
+            <!-- 显示获取的值 -->
+            <picker wx:if="{{!isallday}}" mode="date" value="{{starTime}}" start="2020-03-01" end="2022-12-31"
+              bindchange="bindDateChange">
+              <text>{{starTime}}</text>
+            </picker>
+            <text wx:if="{{isallday}}" bindtap='dianji'>{{starTime}}</text>
+          </view>
+          <view class="changeHome-time-main">
+
+            <text wx:if="{{isallday}}" bindtap='dianji'>离店日期</text>
+            <text wx:if="{{isallday}}" bindtap='dianji'>{{endTime}}</text>
+          </view>
+        </view>
+        <view wx:if="{{isallday}}" class="changeHome-time2">
+          <text bindtap='dianji'>共 {{day}} 晚 ></text>
+        </view>
+      </view>
+      <view class="changeHome-setPrice">
+        <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+          <text>设置我喜欢的星级\价格：{{array[index]}}</text>
+        </picker>
+
+        <text>
+          >
+        </text>
+      </view>
+      <button bindtap="chooseroom" class="changeHome-btn">查找房间</button>
+
+    </view>
+  </view>
+</view>

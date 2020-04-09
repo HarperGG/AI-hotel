@@ -1,0 +1,25 @@
+<i-message id="message" />
+<view class="main">
+  <image class="img" src="http://jiangwei.online:8080/static/dd7b71a2-6e2a-43eb-a732-3e9aad1a6f73.jpg" mode="aspectFill" >
+  </image>
+  <view class="content">
+    <view class="item">
+      <text class="">身份证正面</text>
+      <i-icon  wx:if="{{!isupload1}}" bindtap="addUserInfo" data-type="1"  size="22" type="add" />
+      <i-icon  wx:if="{{isupload1}}" size="22" type="success" />
+    </view>
+    <view class="item">
+      <text class="">身份证反面</text>
+      <i-icon wx:if="{{!isupload2}}"  bindtap="addUserInfo"  data-type="2" size="22" type="add" />
+      <i-icon wx:if="{{isupload2}}" size="22" type="success" />
+    </view>
+    <view class="item">
+      <text class="">个人照片</text>
+      <i-icon  wx:if="{{!isupload3}}"  bindtap="addimg1" data-type="3" size="22" type="add" />
+      <i-icon  wx:if="{{isupload3}}" size="22" type="success" />
+    </view>
+    <view bindtap="submitUser" class="btn">
+     提交
+    </view>
+  </view>
+</view>

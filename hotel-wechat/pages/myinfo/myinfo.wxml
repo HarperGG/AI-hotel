@@ -1,0 +1,25 @@
+<view class="mian">
+  <view class="detail-img">
+    <image class="" src="http://jiangwei.online:8080/static/0a35e398-4d80-4b12-ac42-a7b127254340.jpg" mode="scaleToFill"></image>
+    <i-icon  bindtap="addInfo" class="detail-img-add" size="50" type="add" />
+  </view>
+  <view class="detail-info">
+    <view class="detail-info-content">
+      <view class="info-item">
+        <checkbox-group class="info-itemcheckbox" bindchange="checkboxChange">
+          <label color="#629287" value="{{item.real_name}}" class="checkbox" wx:for="{{infodata}}">
+            <view class="content-items">
+              <text class="">{{item.real_name}}</text>
+              <text class="">{{item.id_number}}</text>
+            </view>
+            <checkbox value="{{item.id}}" class="radio-box" checked="" />
+          </label>
+        </checkbox-group>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="bottom-submit">
+  <text class="">已选（{{chooseNum}}）</text>
+  <view bindtap="affirm">确认</view>
+</view>

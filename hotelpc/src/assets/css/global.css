@@ -1,0 +1,105 @@
+html,
+body,
+#app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  min-width: 1366px;
+  font-family: Microsoft YaHei;
+}
+
+/* 卡片视图 */
+.el-breadcrumb {
+  margin-bottom: 15px;
+  font-size: 12px;
+}
+
+.el-card {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15) !important;
+}
+
+.el-form-item__label {
+  font-size: 16px;
+  font-weight: bold;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+/* 去点number输入框的右边上下箭头 */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none !important;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+/* 覆盖掉表单验证前的 “ * ” 符号 */
+.el-form-item.is-required:not(.is-no-asterisk)>.el-form-item__label:before {
+
+  content: '';
+  width: 0px;
+  margin-right: 0px;
+}
+
+/* ---------------------添加的----------------------- */
+/* 选项卡左边样式 */
+.el-tabs__item {
+  font-size: 18px;
+  font-weight: 500;
+  height: 60px;
+  margin-right: 30px;
+}
+
+/* 设置卡片试图的样式
+.el-card {
+  box-shadow: 0px 0px 17px 1px rgba(0, 0, 0, 0.1) !important;
+} */
+
+/* table文字居中 */
+.el-table td,
+.el-table th {
+  text-align: center;
+}
+
+/* 选项卡右边显示 */
+.el-tab-pane {
+  height: auto !important;
+}
+
+
+/* texterea禁止拖动 */
+.el-textarea .el-textarea__inner {
+  resize: none;
+}
+
+.el-form-item__content {
+  width: auto !important;
+}
+
+/* 图片间距 */
+.el-upload-list--picture-card .el-upload-list__item {
+  margin-right: 60px !important;
+}
+
+.el-submenu__title {
+  font-size: 18px !important;
+  color: rgb(236, 236, 236);
+}
+
+.el-menu-item-group__title {
+  padding: 0 !important;
+}
+
+.el-submenu__title:hover {
+  color: #fff !important;
+  background: linear-gradient(90deg, rgba(37, 117, 236, 1), rgba(116, 171, 253, 1)) !important;
+
+  
+  
+}
+.el-submenu__title:hover i{
+color: #fff !important;
+}

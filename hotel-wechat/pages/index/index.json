@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "rili": "../../component/component",
+    "i-message": "/lib/dist/message/index"
+  }
+}

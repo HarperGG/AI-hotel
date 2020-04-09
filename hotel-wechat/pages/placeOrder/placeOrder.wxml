@@ -1,0 +1,81 @@
+<i-message id="message" />
+<i-grid wx:if="{{isShowLoading}}"  class="grid-loading">
+<i-grid-item  i-class="item">
+  <i-spin custom>
+    <i-icon type="refresh" size="20" i-class="icon-load"></i-icon>
+    <view>Loading</view>
+  </i-spin>
+
+</i-grid-item>
+</i-grid>
+
+<view class="mian">
+  <view class="detail-img">
+    
+    <swiper style="height:100%;width:100%" circular autoplay indicator-dots indicator-active-color="#fff" class="swiperContent_swiper">
+      <swiper-item wx:for="{{imgPath}}" wx:for-item="item">
+        <image src="http://jiangwei.online:8080/static/{{item.path}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+    
+  </view>
+  <view class="detail-info">
+    <view class="detail-left">
+      <view class="detail-leftinfo">
+        <i-icon size="30" type="send" />
+        <text class="">是否配送</text>
+      </view>
+      <view class="detail-leftinfo">
+        <i-icon   size="30" type="time" />
+        <text class="">用餐时间</text>
+      </view>
+      <view class="detail-leftinfo">
+        <i-icon   size="30" type="group" />
+        <text class="">下单人</text>
+      </view>
+      <view class="detail-leftinfo">
+        <i-icon   size="30" type="mobilephone" />
+        <text class="">手机号码</text>
+      </view>
+    </view>
+    <view class="detail-right">
+      <view class="detail-right-title">
+        <text class="">御用餐厅</text>
+        <text class="">Royal Restaurant</text>
+      </view>
+      <view class="detail-right-isSend">
+        <radio-group class="radio-group" bindchange="radioChange">
+         <radio class="radio" wx:key="name" value="1">
+           <text>是</text>
+         </radio>
+          <radio class="radio" wx:key="name" value="0">
+           <text>否</text>
+         </radio>
+       </radio-group>
+      </view>
+      <view class="detail-right-roomnum">
+        <picker class='time-picker' mode="multiSelector" bindchange="bindStartMultiPickerChange" bindtap='pickerTap' bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+          {{startDate}}
+        </picker>
+      </view>
+      <view bindtap="addPerson" class="detail-right-number">
+        {{addpersonnum}}
+        <i-icon type="businesscard" size="20" />
+      </view>
+      <view class="detail-right-phoneNumber">
+        <input bindinput="voteTitle" class="weui-input" maxlength="11" placeholder="请填写用餐人电话" />
+        <i-icon type="mobilephone_fill" size="20" />
+      </view>
+    </view>
+    <view class="detail-bottom">
+      <view class="detail-bottom-submit" bindtap="addOrder">
+        <text>￥{{money}}</text>
+        <text>提交订单</text>
+      </view>
+      <view class="detail-bottom-vip">
+        <text>券</text>
+        <text>VIP 8 折</text>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/check_out.css">
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" type="text/css" href="css/ns-default.css" />
+  <link rel="stylesheet" type="text/css" href="css/ns-style-attached.css" />
+  <link rel="stylesheet" href="css/jquery.mloading.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="title">
+     
+      <span>AI酒店</span>
+    </div>
+    <div class="content">
+      <div class="content-info">
+        <div class="form">
+
+          <div class="form-item">
+            <div class="form-item-name">
+              <img src="./icon/人.png" alt="">
+              <span>姓名</span>
+            </div>
+            <span id="name"></span>
+          </div>
+          <div class="form-item">
+            <div class="form-item-name">
+              <img src="./icon/手机.png" alt="">
+              <span>电话</span>
+            </div>
+            <span id="number"></span>
+          </div>
+          <div class="form-item">
+            <div class="form-item-name">
+              <img src="./icon/房子.png" alt="">
+              <span>房间号</span>
+            </div>
+            <span id="roomNum"></span>
+          </div>
+          <div class="form-item">
+            <div class="form-item-name">
+              <img src="./icon/入住.png" alt="">
+              <span>入住时间</span>
+            </div>
+            <span id="beginTime"></span>
+          </div>
+          <div class="form-item">
+            <div class="form-item-name">
+              <img src="./icon/退房.png" alt="">
+              <span>退房时间</span>
+            </div>
+            <span id="endTime"></span>
+          </div>
+        </div>
+        <div class="consume">
+          <div class="consume-title">消费情况</div>
+          <div class="consume-info">
+            
+
+          </div>
+        </div>
+      </div>
+      <div class="btn">
+        办
+        <br>
+        理
+        <br>
+        退
+        <br>
+        房
+      </div>
+    </div>
+  </div>
+  <script src="js/modernizr.custom.js"></script>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+  <script src="./js/jquery.mloading.js"></script>
+  <script src="./js/classie.js"></script>
+  <script src="./js/notificationFx.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // 获取消费数据
+      var consumeData = JSON.parse(window.sessionStorage.getItem('infoData'))[0];
+      var detail = JSON.parse(window.sessionStorage.getItem('detail'));
+      console.log(window.sessionStorage.getItem('idCardNum'));
+      console.log(consumeData);
+      console.log(detail);
+      $('#name').text(consumeData.real_name);
+      $('#number').text(consumeData.phone);
+      $('#roomNum').text(consumeData.room_number);
+      $('#beginTime').text(parseTime1(new Date(consumeData.check_in_time)));
+      $('#endTime').text(parseTime1(new Date(consumeData.check_out_time)));
+      $('#consume-info').empty();
+      
+      $.ajax({
+        type: "get",
+        url: "http://jiangwei.online:8080/phone/getAllNotPayOrders/" + window.sessionStorage.getItem(
+          'idCardNum'),
+        headers: {
+          token:window.sessionStorage.getItem('token')
+        },
+        dataType: "json",
+        success: function (res) {
+          console.log(res);
+          res.data.forEach(function (item) {
+            let itemConsume = ` <div class="consume-item">
+              <div>${parseTime(new Date(item.create_at))}</div>
+              <div>${item.item_name}</div>
+              <div>${item.item_money}￥</div>
+            </div>`
+            $('.consume-info').append(itemConsume)
+          })
+        },
+        error: function (error) {
+
+        }
+      });
+      // 暴力退房
+      $('.btn').click(function () {
+        $.ajax({
+          type: "put",
+          url: "http://jiangwei.online:8080/phone/updateNotPayOrdersStatus/" + window.sessionStorage
+            .getItem('idCardNum'),
+          headers: {
+            token:window.sessionStorage.getItem('token')
+          },
+          dataType: "json",
+          success: function (res) {
+            var notification = new NotificationFx({
+              message: `<span class="icon icon-calendar"></span>
+           <p>办理入住成功</p>
+           <p>正在跳转...</p>`,
+              layout: 'attached',
+              effect: 'bouncyflip',
+              type: 'warning', // notice, warning or error
+            });
+            notification.show();
+
+            setTimeout(function () {
+              window.location.href = './index.html'
+            }, 2500)
+          },
+          error: function (error) {
+
+          }
+        });
+
+
+      })
+
+      // 格式化时间戳
+      function parseTime(d) {
+        var newDate = (d.getMonth() + 1) +
+          '月' + d.getDate() + '日 ' +
+          d.getHours() + ':' +
+          d.getMinutes();
+        return newDate;
+      }
+
+      // 格式化时间戳
+      function parseTime1(d) {
+        var newDate = d.getFullYear() +
+          '-' + (d.getMonth() + 1) +
+          '-' + d.getDate() + ' ' +
+          d.getHours() + ':' +
+          d.getMinutes() + ':' +
+          d.getSeconds();
+        return newDate;
+      }
+    })
+  </script>
+</body>
+
+</html>

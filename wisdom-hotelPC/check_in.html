@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="css/check_in.css">
+  <link rel="stylesheet" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/ns-default.css" />
+    <link rel="stylesheet" type="text/css" href="css/ns-style-attached.css" />
+    <link rel="stylesheet" href="css/jquery.mloading.css">
+</head>
+
+<body>
+  <div class="main">
+    <div class="title">
+      
+      <span>AI酒店</span>
+    </div>
+    <div class="content">
+      <div class="form">
+        <div class="form-item">
+          <div class="form-item-name">
+            <img src="./icon/人.png" alt="">
+            <span>姓名</span>
+          </div>
+          <span id="name"></span>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">
+            <img src="./icon/手机.png" alt="">
+            <span >电话</span>
+          </div>
+          <span id="number"></span>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">
+            <img src="./icon/房子.png" alt="">
+            <span >入住房间号</span>
+          </div>
+          <span id="rooms"></span>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">
+            <img src="./icon/入住.png" alt="">
+            <span>入住时间</span>
+          </div>
+          <span id="check_in_time"></span>
+        </div>
+        <div class="form-item">
+          <div class="form-item-name">
+            <img src="./icon/退房.png" alt="">
+            <span>退房时间</span>
+          </div>
+          <span id="check_out_time"></span>
+        </div>
+      </div>
+      <div class="btn">
+        确
+        <br>
+        认
+        <br>
+        入
+        <br>
+        住
+      </div>
+    </div>
+  </div>
+ <script src="js/modernizr.custom.js"></script>
+  <script src="./js/jquery-3.3.1.min.js"></script>
+    <script src="./js/jquery.mloading.js"></script>
+    <script src="./js/classie.js"></script>
+    <script src="./js/notificationFx.js"></script>
+  <script>
+    $(document).ready(function () {
+      var newData = JSON.parse(window.sessionStorage.getItem('infoData'))
+      console.log(newData);
+      $('#name').text(newData.real_name)
+      $('#number').text(newData.phone)
+      $('#rooms').text(newData.room_number)
+      $('#check_in_time').text(parseTime(new Date(newData.check_in_time)))
+      $('#check_out_time').text(parseTime(new Date(newData.check_out_time)))
+
+      // 格式化时间戳
+      function parseTime(d) {
+        var newDate = d.getFullYear() +
+          '-' + (d.getMonth() + 1) +
+          '-' + d.getDate() + ' ' +
+          d.getHours() + ':' +
+          d.getMinutes() + ':' +
+          d.getSeconds();
+        return newDate;
+      }
+
+      $('.btn').click(function () {  
+         var notification = new NotificationFx({
+         message: `<span class="icon icon-calendar"></span>
+         <p>办理入住成功</p>
+         <p>正在跳转...</p>`,
+         layout: 'attached',
+         effect: 'bouncyflip',
+         type: 'warning', // notice, warning or error
+         });
+         notification.show();
+
+          setTimeout(function () {
+          window.location.href = './index.html'
+          }, 2500)
+      })
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,7 @@
+{
+
+  "navigationStyle": "custom",
+    "usingComponents": {
+      "i-icon": "/lib/dist/icon/index"
+    }
+}

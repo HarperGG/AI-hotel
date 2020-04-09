@@ -1,0 +1,41 @@
+<view class="main">
+  <view class="active-row">
+      <view  data-type="{{activeData[0].type}}"  bindtap="ship" class="active-row-item">
+        <text class="">{{activeData[0].name}}</text>
+        <text class="">Natatorium</text>
+        <image class="" src="http://jiangwei.online:8080/static/{{activeData[0].path}}" mode="aspectFill"></image>
+      </view>
+    <view  data-type="{{activeData[1].type}}" bindtap="ship" class="active-row-item">
+      <text class="">{{activeData[1].name}}</text>
+      <text class="">Conference Room</text>
+      <image class="" src="http://jiangwei.online:8080/static/{{activeData[1].path}}" mode="aspectFill"></image>
+    </view>
+    <view  data-type="{{activeData[2].type}}"  bindtap="ship" class="active-row-item">
+      <text class="">{{activeData[2].name}}</text>
+      <text class="">Fitness center</text>
+      <image class="" src="http://jiangwei.online:8080/static/{{activeData[2].path}}" mode="aspectFill"></image>
+    </view>
+  </view>
+
+  <view class="active-col">
+    <view  data-type="{{activeData[3].type}}"   bindtap="ship" class="active-col-item">
+      <image class="" src="http://jiangwei.online:8080/static/{{activeData[3].path}}" mode="aspectFill"></image>
+      <text class="">{{activeData[3].name}}</text>
+      <text class="">Restaurant</text>
+    </view>
+    <view  data-type="{{activeData[4].type}}"  bindtap="ship" class="active-col-item">
+      <image class="" src="http://jiangwei.online:8080/static/{{activeData[4].path}}" mode="aspectFill"></image>
+      <text class="">{{activeData[4].name}}</text>
+      <text class="">Singing room</text>
+    </view>
+    <view data-type="{{activeData[5].type}}"  bindtap="ship" class="active-col-item">
+      <image class="" src="http://jiangwei.online:8080/static/{{activeData[5].path}}" mode="aspectFill"></image>
+      <text class="">{{activeData[5].name}}</text>
+      <text class="">Chess card room</text>
+    </view>
+
+    <view class="active-col-buttom">
+
+    </view>
+  </view>
+</view>

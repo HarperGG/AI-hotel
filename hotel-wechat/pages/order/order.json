@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "i-tabs": "/lib/dist/tabs/index",
+    "i-tab": "/lib/dist/tab/index"
+  },
+  "navigationBarTitleText": "智 慧 酒 店"
+}

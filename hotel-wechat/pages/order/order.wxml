@@ -1,0 +1,32 @@
+<view class="" wx:if="{{ishistory}}">
+  <i-tabs current="{{ current }}" color="#040404" bindchange="handleChange">
+    <i-tab bindtap="getNoUseOrder" key="tab1" title="待使用订单"></i-tab>
+    <i-tab bindtap="getAllOrder" key="tab2" title="全部订单"></i-tab>
+  </i-tabs>
+</view>
+<view  wx:if="{{!ishistory}}" class="historyorder-title">
+  历史订单
+</view>
+<view class="order">
+  <view  class="order-item" wx:for="{{noUserOrder}}">
+    <view class="order-time">预定日期：{{item.create_at}}</view>
+    <view  data-id="{{item.id}}" bindtap="" class="order-content">
+      <view class="order-content1">
+        <text class="">{{item.name}}</text>
+        <text class="">{{item.room_number}}</text>
+      </view>
+      <view class="order-content2">
+        <text class="">{{item.money}}￥</text>
+        <text class="">{{item.status}}</text>
+      </view>
+      <view class="order-content3">
+        <text class="">{{item.check_in_time}} 至 {{item.check_out_time}}</text>
+        <view class="">在线咨询</view>
+        <view class="">删除订单</view>
+      </view>
+    </view>
+  </view>
+  <view bindtap="historyorder"  wx:if="{{ishistory}}" class="history-order">
+    历史订单
+  </view>
+</view>

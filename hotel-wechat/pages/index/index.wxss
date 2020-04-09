@@ -1,0 +1,196 @@
+  .swiperContent {
+    width: 100%;
+    position: relative;
+    height: 402rpx;
+  }
+
+  .swiperContent_swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiperContent image {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiperContent_swiper .wx-swiper-dot {
+    width: 30rpx;
+    display: inline-flex;
+    height: 30rpx;
+    margin-left: 10rpx;
+    margin-bottom: 50rpx;
+    border: 1rpx solid #fff;
+    justify-content: space-between;
+  }
+
+  .swiperContent_swiper .wx-swiper-dot::before {
+    content: '';
+    flex-grow: 1;
+    background: rgba(0, 0, 0, 0.01);
+    border-radius: 50%;
+  }
+
+  .swiperContent_swiper .wx-swiper-dot-active::before {
+    background: #fff;
+  }
+
+
+  /* 查找房间 */
+  .changeHome {
+    background: rgba(14, 60, 44);
+    height: 700rpx;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    position: relative;
+  }
+
+  .changeHome-card {
+    box-sizing: border-box;
+    padding: 0 40rpx;
+    height: 700rpx;
+    border-radius: 45rpx;
+    position: absolute;
+    width: 90%;
+    box-shadow: 0 -5rpx 5rpx 0 rgba(0, 0, 0, .1);
+    top: -30rpx;
+    margin-top: -20rpx;
+    background: #fff;
+  }
+
+  .changeHome-card-logo {
+    margin-top: 60rpx;
+    margin-left: 40rpx;
+    display: block;
+    font-size: 40rpx;
+    letter-spacing: 10rpx;
+    font-family: HYGangYiTiJ;
+    font-weight: bold;
+    color: rgba(204, 140, 70, 1);
+  }
+  .changeHome-info {
+    margin-top: 40rpx;
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid rgba(90, 91, 87, 1);
+    width: 100%;
+    height: 90rpx;
+    font-size: 40rpx;
+    font-family: FZHei-B01S;
+    font-weight: bold;
+    color: rgba(36, 37, 35, 1);
+  }
+  
+  .changeHome-info text {
+    width: 40%;
+    margin-top: 25rpx;
+    line-height: 60rpx;
+    text-align: center;
+  }
+  .changeHome-info-active{
+    border-bottom: 4rpx solid rgba(13, 59, 46, 1);
+  }
+
+  /* 选择入住时间 */
+
+  .changeHome-time{
+    height: 122rpx;
+    width: 100%;
+    left: 0;
+    position: relative;
+    display: flex;
+    border-bottom: 1px solid rgba(90, 91, 87, 1);
+  }
+ .changeHome-time1 {
+   height: 122rpx;
+   width: 80%;
+   display: flex;
+   flex-wrap: wrap;
+   margin-left: 20rpx;
+ }
+  .changeHome-time2 {
+    height: 122rpx;
+    width: 19%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    font-size:24rpx;
+    font-weight:bold;
+    color:rgba(36, 37, 35, 1);
+  }
+
+  .changeHome-time-title{
+    width: 49%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    height: 100%;
+    align-content: space-around;
+  }
+  .changeHome-time-title text {
+        font-size:35rpx;
+        font-family:FZHei-B01S;
+        font-weight:bold;
+        color:rgba(36, 37, 35, 1);
+        display: inline-block;
+        width: 100%;
+    text-align: center;
+  }
+  .changeHome-time-main{
+    width: 49%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+    height: 100%;
+    box-sizing: border-box;
+  }
+
+  .changeHome-time-main text {
+    font-size:35rpx;
+    font-family:FZHei-B01S;
+    font-weight:bold;
+    color:rgba(36, 37, 35, 1);
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+  }
+  /* 设置价格星级 */
+  .changeHome-setPrice{
+    width: 100%;
+    height: 100rpx;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(90, 91, 87, 1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10rpx 0 0rpx;
+  }
+  .changeHome-setPrice text{
+    display: inline-block;
+    margin-top: -40rpx;
+    margin-left: 30rpx;
+   font-size:30rpx;
+   font-weight:400;
+   color:rgba(109, 110, 107, 1);
+  }
+
+  /* 查找房间 */
+  .changeHome-btn{
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 60rpx;
+    width:350rpx;
+    height:80rpx;
+    background:rgba(109, 151, 115, 1);
+    border-radius:15rpx;
+    font-size:40rpx;
+    font-weight:bold;
+    color:rgba(255, 255, 255, 1);
+    line-height:20rpx;
+  }
+  

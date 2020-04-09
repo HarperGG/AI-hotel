@@ -1,0 +1,96 @@
+<i-message id="message" />
+<view class="search">
+  <view class="search-time">
+    <text>住 {{time1}}</text>
+    <text>离 {{time2}}</text>
+  </view>
+  <input    bindinput="voteTitle" class="weui-input" auto-focus placeholder="楼 层 \ 夜 景 \ 单 人" />
+  <view class="search-icon">
+    <i-icon bindtap="searchRoom" type="search" size="20" color="#80848f" />
+  </view>
+</view>
+<view class="filtrate">
+  <view bindtap="chooseprice" class="filtrate-item">
+    价格
+    <i-icon type="integral" />
+  </view>
+  <view bindtap="chooseSort" class="filtrate-item">
+    排序
+    <i-icon type="integral" />
+  </view>
+  <view bindtap="chooseFilter" class="filtrate-item">
+    筛选
+    <i-icon type="integral" />
+  </view>
+  <!-- 选择价格下拉 -->
+  <view wx:if="{{isPricechoose}}" class="priceDropBox">
+    <text class="priceDropBox-title">
+      价格
+    </text>
+    <view class="priceDropBox-info">
+      <text wx:for="{{filterPrice}}" class="{{item.ispitch?'priceDropBox-info-textColor':''}}" data-index="{{item.id}}"
+        bindtap="changeStatus">{{item.value}}</text>
+    </view>
+  </view>
+  <!-- 排序下拉 -->
+  <view wx:if="{{issortchoose}}" class="sortDropBox">
+    <text wx:for="{{sortchoose}}" class="{{item.ischoose?'sort-textstyle':''}}" data-index="{{item.id}}"
+      bindtap="changeStatusSort">
+      {{item.value}}
+    </text>
+  </view>
+  <!-- 下拉筛选 -->
+  <view wx:if="{{isfilterchoose}}" class="filterDropBox">
+
+    <scroll-view scroll-y="true" style="height: 600rpx;" bindscrolltoupper="upper" bindscrolltolower="lower"
+      bindscroll="scroll">
+      <view wx:for="{{filterChoose}}" wx:for-item="item1" class="filterItem">
+        <text class="filterItem-title">{{item1.filterType}}</text>
+        <view class="filterItem-info">
+          <text wx:for="{{item1.data}}" wx:for-item="item2" class="{{item2.ischoose?'priceDropBox-info-textColor':''}}"
+            data-index="{{item2.id}}" bindtap="filterStatus">
+            {{item2.value}}
+          </text>
+        </view>
+      </view>
+    </scroll-view> 
+    <view class="filterDropBox-btn">
+      <view bindtap="cancelFilter" class="">取消</view>
+      <view bindtap="confirmFilter" class="">确定</view>
+    </view>
+  </view>
+</view>
+<view class="vip">
+  <view class="vip-title">
+    会员福利专享
+  </view>
+  <view class="vip-option">
+    领取
+    <i-icon type="enter" />
+  </view>
+</view>
+
+<view class="content">
+  <!-- <view bindtap="chooseroom" class="content-item1">
+    <image class="content-item1-img" src="/static/img/tatel1.jpg" mode="aspectFill">
+    </image>
+    <text class="">高层双人房</text>
+    <text class="">宜住2人</text>
+    <text class="">36楼+夜景+落地窗</text>
+    <text class="">168 ￥</text>
+    <text class="">
+    </text>
+  </view> -->
+
+  <view wx:for="{{allRoom}}" data-type="{{item.type}}" data-money="{{item.money}}" bindtap="chooseroom" class="content-item2">
+    <image class="" src="http://jiangwei.online:8080/static/{{item.path}}" mode="aspectFill"></image>
+    <text class="">26楼+三层+会客间+泳池</text>
+    <text class="">{{item.name}}</text>
+    <text class="">{{item.description}}</text>
+    <text class="">{{item.money}} ￥</text>
+    <text class=""></text>
+  </view>
+</view>
+<view wx:if="{{isPricechoose||issortchoose||isfilterchoose}}" class="masking">
+
+</view>

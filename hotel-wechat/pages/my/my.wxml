@@ -1,0 +1,66 @@
+<view class="mian">
+  <view class="top">
+    <view class="logo">智慧酒店</view>
+    <view class="info">
+      <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+        获取头像昵称
+      </button>
+      <view wx:else class="info-content">
+        <image bindtap="bindViewTap" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+        <text>用户名：{{userInfo.nickName}}</text>
+      </view>
+    </view>
+    <view class="column">
+      <view   bindtap="allOrder" class="column-item">
+        <i-icon type="activity" color="#6b9874" size="30" />
+        <text class="">全部订单</text>
+      </view>
+      <view  bindtap="isOrder" class="column-item">
+        <i-icon color="#6b9874" size="30" type="redpacket" />
+        <text   class="">待付款</text>
+      </view>
+      <view   bindtap="historyOrder" class="column-item">
+        <i-icon color="#6b9874" size="30" type="dynamic" />
+        <text  class="">历史订单</text>
+      </view>
+      <view bindtap="myinfo" class="column-item">
+        <i-icon color="#6b9874" size="30" type="addressbook" />
+        <text class="">常用信息</text>
+      </view>
+      <view class="column-item">
+        <i-icon color="#6b9874" size="30" type="remind" />
+        <text class="">消息</text>
+      </view>
+    </view>
+  </view>
+  <view class="content">
+    <view class="purse">
+      <text class="purse-title">
+        我的钱包
+      </text>
+      <view class="purse-info">
+        <view class="purse-item">
+          <text>3张</text>
+          <text>优惠券</text>
+        </view>
+        <view class="purse-item">
+          <text>8折</text>
+          <text>VIP享八折</text>
+        </view>
+      </view>
+    </view>
+    <view class="purse">
+      <text class="purse-title">其他</text>
+      <view class="purse-info">
+        <view class="purse-item1">
+          <i-icon type="feedback" size="60" color="#060606"/>
+          <text>关于</text>
+        </view>
+        <view class="purse-item1">
+          <i-icon type="brush"  size="60" color="#060606"/>
+          <text>反馈</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

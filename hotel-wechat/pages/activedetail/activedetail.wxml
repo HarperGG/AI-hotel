@@ -1,0 +1,29 @@
+<view class="mian">
+  <view class="detail-img">
+    
+     <swiper style="height:100%;width:100%" circular autoplay indicator-dots indicator-active-color="#fff" class="swiperContent_swiper">
+      <swiper-item wx:for="{{imgPath}}" wx:for-item="item">
+        <image src="http://jiangwei.online:8080/static/{{item.path}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="detail-info">
+        <view class="name1">{{name}}</view>
+        <view class="name2">Natatorium</view>
+        <view class="classify">面积：{{area}}平方米</view>
+        <view class="address">{{room_number}}+安全设施</view>
+        <view class="price">
+          <text>￥{{money}}</text><text>\小时</text>
+        </view>
+        <view class="introduce1">
+          {{description}}
+        </view>
+        <view class="introduce2">
+          Let go of all the camouflage, take off the bustling mask, let go of you and me, and walk in the comfortable swimming pool. At this moment, you are not you, I am not me. We are all looking for ourselves in nature. After sweating, we enjoy the time after grinding without emotion.
+        </view>
+</view>
+</view>
+     <view class="detail-btn">
+     <button class="detail-btn-order">立即预定</button>
+     <view class="detail-btn-vip">开通VIP享8折</view>
+   </view>

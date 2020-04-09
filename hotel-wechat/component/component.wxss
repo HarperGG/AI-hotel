@@ -1,0 +1,210 @@
+
+page{
+  height: 100%;
+  position: relative;
+}
+/****************日历样式**********************/
+.page{
+  height:100%;
+  position: fixed;
+  z-index: 1000;
+  top: 100%;
+  left:0;
+  background-color: #fff;
+}
+.scroll{
+  height: 100%;
+  position: relative;
+}
+.scroll1{
+  height: calc(100% - 160rpx);
+  padding-top: 160rpx;
+}
+.top{
+  display: flex;
+  flex-flow: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.dianxian{
+  width: 100%;
+}
+.xianRi{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+  border-bottom:2rpx #ccc solid; 
+}
+.zhiDing1{
+  position:absolute;
+  width: 100%;
+  height: 80rpx;
+  border-top:2rpx #ccc solid; 
+  border-bottom:2rpx #ccc solid; 
+}
+.zhiMian{
+  width: 92%;
+  margin: 0 auto;
+  height: 80rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.quZI{
+  font-size: 28rpx;
+  color:red;
+}
+.quZI1{
+  font-size: 28rpx;
+  color:#999;
+}
+.zhiDing{
+  position:absolute;
+  width: 100%;
+  height: 80rpx;
+  top: 80rpx;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.zhiDing .list:first-child,.zhiDing .list:last-child{
+  color:red
+}
+.xianRi:first-child{
+  margin-top: 30rpx;
+}
+.xianriLI_1{
+  width: 100%;
+  padding:30rpx 0 10rpx 4%;
+  font-size: 28rpx;
+  font-weight: bold;
+}
+.xianriLI{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.zhiDing .list,.xianRi .xianriLI .list{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:calc(100%/7);
+  height: 70rpx;
+  margin: 5px 0;
+  font-size: 24rpx;
+}
+.xianRi .xianriLI .list{
+  position: relative;
+  z-index: 9;
+}
+.day{
+  background-color: red;
+  color: #fff;
+  border-radius: 50rpx;
+  border:  2rpx red solid;
+}
+.xaunDay{
+  border:  2rpx red solid !important;
+  border-radius: 50rpx;
+}
+.quShang{
+  color:#ccc;
+  opacity: 0;
+}
+.quXia{
+  color:#ccc;
+  opacity: 0;
+}
+.xuanZ{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+.zuoyou{
+  width: 120rpx;
+  text-align: center
+}
+.hui{
+  color: #ccc;
+}
+.xianDayaRi{
+  position: relative;
+  z-index: 9;
+  height: 70rpx;
+  width: 70rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.xuanbgDate{
+  background-color: #fff;
+  color:#000;
+}
+.bgDate{
+  background-color:rgba(128, 248, 252, 0.5);
+}
+.qiangXuan{
+  background-color: rgba(128, 248, 252, 0.5);
+  position: absolute;
+  z-index: 1;
+  right: 0;
+  width: 60rpx;
+  height: 70rpx;
+}
+.houXuan{
+  background-color:rgba(128, 248, 252, 0.5);
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  width: 60rpx;
+  height: 70rpx;
+}
+.ruzhu{
+  font-size: 20rpx;
+  font-weight: bold;
+  color: red
+}
+.likai{
+  font-size: 20rpx;
+  font-weight: bold;
+  color: red
+}
+.ziDaXIao{
+  font-size: 20rpx;
+}
+/********************************************/
+.xianShi{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.starTime,.endTime{
+  flex: 3;
+   display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}
+.quJian{
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 28rpx;
+}

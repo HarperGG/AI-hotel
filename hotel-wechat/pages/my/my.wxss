@@ -1,0 +1,145 @@
+.mian{
+  width: 100%;
+  height: auto;
+}
+.top{
+  width: 100%;
+  height: 600rpx;
+  background: rgba(12, 60, 46);
+  box-sizing: border-box;
+  padding-bottom: 80rpx;
+  display: flex;
+  align-content: space-around;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.logo{
+  width:90%;
+  letter-spacing: 10rpx;
+  font-size:40rpx;
+  font-weight:bold;
+  color:rgba(204, 140, 70, 1);
+}
+.info{
+  letter-spacing: 8rpx;
+  width:90%;
+  font-size:35rpx;
+  font-weight:500;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  color:#fff;
+}
+.info-content{
+  width:100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.info image{
+border-radius:20rpx;
+ width: 100rpx;
+ height: 100rpx;
+}
+.info text {
+  margin-left: 20rpx;
+}
+.column{
+  display: flex;
+  width: 90%;
+  justify-content: space-between;
+  align-items: center;
+}
+.column-item{
+  display: flex;
+  font-size: 15rpx;
+  flex-wrap: wrap;
+  color: #6b9874;
+  width: 15%;
+  justify-content: center;
+}
+.column-item i-icon{
+  width: 100%;
+  text-align: center;
+}
+.column-item text {
+  width: 100%;
+  text-align: center;
+}
+.content{
+  color:rgba(2, 2, 2, 1);
+  margin-top: -40rpx;
+  height: 680rpx;
+  width: 100%;
+  background:rgba(230, 230, 230, 1);
+  border-top-left-radius: 40rpx;
+  border-top-right-radius: 40rpx;
+  box-sizing: border-box;
+  letter-spacing: 10rpx;
+  padding: 0rpx 40rpx;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-content: flex-start;
+}
+.purse{
+  width: 100%;
+  height: 300rpx;
+  border-bottom: 1px solid rgba(191, 191, 191, 1);
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+}
+.purse-title{
+  width:100%;
+  font-size:30rpx;
+  font-family:FZHei-B01S;
+  font-weight:bold;
+}
+.purse-info{
+  width: 100%;
+  height: 40%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.purse-item{
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-around;
+  justify-content: center;
+}
+.purse-item text:nth-of-type(1){
+width: 100%;
+text-align: center;
+  font-size:60rpx;
+  font-family:FZHei-B01S;
+  font-weight:400;
+  color:rgba(6, 6, 6, 1);
+}
+.purse-item text:nth-of-type(2) {
+  width: 100%;
+  font-size: 20rpx;
+  text-align: center;
+  font-family: FZHei-B01S;
+  font-weight: 400;
+  color: rgba(6, 6, 6, 1);
+}
+.purse-item1{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: space-around;
+    justify-content: center;
+}
+.purse-item1 text{
+  width: 100%;
+  font-size: 20rpx;
+  text-align: center;
+  font-family: FZHei-B01S;
+  font-weight: 400;
+  color: rgba(6, 6, 6, 1);
+}

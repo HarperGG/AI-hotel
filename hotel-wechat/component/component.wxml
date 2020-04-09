@@ -1,0 +1,40 @@
+<view animation="{{animationData}}" class="page" id="page">
+  <view class="scroll">
+    <view class="zhiDing1">
+      <view class="zhiMian">
+        <view class="quZI" bindtap='quXiao'>取消</view>
+        <view class="quZI1" bindtap='quding'>确定</view>
+      </view>
+    </view>
+    <view class="zhiDing">
+      <view class="list " wx:for="{{date}}" wx:key="{{date}}">{{item}}</view>
+    </view>
+    <scroll-view class="scroll1" scroll-y='true' scroll-into-view='{{tiao}}'>
+      <view id="tiao"></view>
+      <view class="xianRi" wx:for="{{xianShiZongData}}" wx:for-item='list' wx:key="list.id">
+        <view class="xianriLI_1">{{list.xian}}</view>
+        <view class='xianriLI'>
+          <view class="list quXia" wx:for="{{list.shangData}}" wx:key="{{shangY}}">{{item}}</view>
+          <view wx:if="{{xianShi==list.xian && item.data<xianDay}}" class="list hui" wx:for="{{list.xainData}}"
+            wx:key="{{dateArr}}">{{item.data}}</view>
+          <view wx:if="{{xianShi==list.xian && item.data>=xianDay || xianShi!=list.xian}}"
+            class="list {{(item.getTime>xuanZheData[0].getTime && item.getTime<xuanZheData[1].getTime)?'bgDate':''}}"
+            wx:for="{{list.xainData}}" wx:key="{{dateArr}}" bindtap='dianXuan' data-day='{{item.data}}'
+            data-shi='{{list.xian}}'>
+            <view wx:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[0].getTime}}' class='qiangXuan'></view>
+            <view wx:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[1].getTime}}' class='houXuan'></view>
+            <view
+              class="xianDayaRi {{xuanZheData.length==2 && (item.getTime==xuanZheData[0].getTime||item.getTime==xuanZheData[1].getTime)?'xuanbgDate':''}}  {{xianShi==list.xian && xianDay==item.data?'day':''}} {{(xuanZheData[0].xuanShiJian==list.xian && xuanZheData[0].xuanDayShi==item.data)||(xuanZheData[1].xuanShiJian==list.xian && xuanZheData[1].xuanDayShi==item.data)?'xaunDay':''}}">
+              <view>{{item.data}}</view>
+              <view wx:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[0].getTime}}' class='ruzhu'>
+                {{xuanZheData[0].text}}</view>
+              <view wx:if='{{xuanZheData.length==2 && item.getTime==xuanZheData[1].getTime}}' class='likai'>
+                {{xuanZheData[1].text}}</view>
+            </view>
+          </view>
+          <view class="list quXia" wx:for="{{list.xiaData}}" wx:key="{{xiaY}}">{{item}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>
